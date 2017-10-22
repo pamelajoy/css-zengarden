@@ -1,0 +1,553 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+/*RESET*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;  
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+// 
+// MIXINS
+// 
+@mixin box-shadow{
+  -webkit-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  -moz-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  -ms-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  -o-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+}
+@mixin font-face($font-name, $font-filename) {
+  font-family: $font-name;
+  src: url('#{$font-filename}.eot');
+  src: local('☺︎'),
+        url('#{$font-filename}.eot?iefix') format('eot'),
+        url('#{$font-filename}.woff') format('woff'),
+        url('#{$font-filename}.otf') format('opentype'),
+        url('#{$font-filename}.ttf') format('truetype'),
+        url('#{$font-filename}.svg##{$font-name}') format('svg'); 
+}
+@mixin font-smoothing{
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+@mixin linear-gradient($linear-gradient) {
+  background: -webkit-$linear-gradient;
+  background: -moz-$linear-gradient;
+  background: -ms-$linear-gradient;
+  background: -o-$linear-gradient;
+  background: $linear-gradient;
+}
+@mixin transform($transforms) {
+  -webkit-transform: $transforms;
+  -moz-transform: $transforms;
+  -ms-transform: $transforms;
+  -o-transform: $transforms;
+  transform: $transforms;
+}
+
+@mixin transform-origin ($origin) {
+  -webkit-transform-origin: $origin;
+  -moz-transform-origin: $origin;
+  -ms-transform-origin: $origin;
+  -o-transform-origin: $origin;
+  transform-origin: $origin;
+}
+@mixin transition($transition){
+  -webkit-transition: $transition;
+  -moz-transition: $transition;
+  -ms-transition: $transition;
+  -o-transition: $transition;
+  transition: $transition;
+}
+@mixin rotate ($deg) {
+  @include transform(rotate(#{$deg}deg));
+  @include transform-origin(50% 50%);
+}
+
+@mixin translate ($x, $y) {
+   @include transform(translate($x, $y));
+   @include transform-origin(50% 50%);
+}
+
+$background1:url('triangle.svg');
+$background2:url('triangle2.svg');
+// 
+
+// COLORS
+$color1: #FF9B22; /*Orange*/
+$color2: #F24408; /*Red*/
+$color3: #FFC715; /*Yellow*/
+$color4: #F90422; /*DkRed*/
+
+$primary-text-color: white;
+$heading-text-color1: $color2;
+$heading-text-color2: $color3;
+$link-text-color: $color3;
+// 
+
+// GRADIENTS
+$gradient1: linear-gradient($color1, $color2 12%, $color1);
+//
+
+//
+
+// FONTS
+$primary-font: "eskorte-latin",sans-serif;
+$secondary-font: "skolar-sans-latin",sans-serif;
+// 
+
+@mixin heading($heading) {
+  @if $heading == h1 {
+    font-family: $secondary-font;
+    font-weight: 400;
+    padding: .1em;
+  }
+} 
+
+@mixin font($family: $primary-font, $color: $primary-text-color, $size: 1em, $style: normal, $weight: 400) {
+  color: $color;
+  font-family: $family;
+  font-weight: $weight;
+  font-size: $size;
+}
+
+// FONTS
+$icon-font-name: 'fontawesome';
+$icon-font-filename: 'fontawesome-webfont';
+
+@font-face {
+  @include font-face($icon-font-name, $icon-font-filename);
+}
+//
+
+
+html{
+  background: $color1;
+  color: white;
+}
+body{
+  margin: 0 auto;
+  min-width: 480px;
+  max-width: 1280px;
+  text-align: justify;
+}
+p, li {
+  @include font;
+  padding: .5em;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: $secondary-font;
+  font-weight: 400;
+  padding: .1em;
+}
+h3{
+  font-size: 2em;
+}
+
+a:active, a:focus, a:hover, a:link, a:visited {
+  color: $link-text-color;;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+header {
+  @include rotate(18);
+  bottom: 0;
+  height: 400px;
+  left: -50px;
+  overflow: hidden;
+  position: absolute;
+  right: 2000px;  
+  text-align: center;
+  top: 112px;
+  width: 100%;
+
+  h1 {
+    @include font($family: $secondary-font, $color: $heading-text-color1, $size: 4.5em, $style: italic, $weight: 700);
+    width: 100%;
+    white-space: nowrap;
+  }
+  h2{
+    @include font($family: $secondary-font, $size: 3em, $style: italic);
+    position: absolute;
+    left: 0;
+    width: 100%;
+    white-space: nowrap;
+  }
+}
+header:before{
+  @include rotate(-18);
+  background: $background1 no-repeat center;
+  background-size: contain;
+  bottom: 0;
+  content: "";
+  height: 256px;
+  left: 80px;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 80px;
+  z-index: -1;
+}
+
+.summary {
+  @include rotate(6);
+  margin-top: 400px;
+  margin-left: 20px;
+  margin-right: 40px;
+  position: relative;
+  p{
+    font-style: italic;
+  }
+}
+.preamble{
+  margin: 4em 4em;
+  padding: 2em;
+  position: relative;
+  left:0;
+  @include rotate(-8);
+}
+.preamble:before{
+  background: $background1 no-repeat center;
+  background-size: contain;
+  @include rotate(172);
+  content: "";
+  height: 256px;
+  padding: 20px;
+  position: absolute;
+  width: 512px;
+  z-index: -1;
+}
+.main {
+  background: $color2;
+  @include linear-gradient($gradient1);
+  margin-top: 10em;
+  position: relative;
+  h3{
+  color: #FFC715;
+  font-size: 4em;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+  }
+}
+
+.explanation, .participation, .benefits, .requirements{
+  margin-bottom: 8em;
+  p{
+    line-height: 1.5em;
+    position: relative;
+    z-index: 1;
+  }
+  h3{
+    position: relative;
+    z-index: 1;
+  }
+}
+
+.explanation:before, .participation:before, .benefits:before, .requirements:before{
+  background: $background2 no-repeat center;
+  background-size: contain;
+  content: "";
+  height: 256px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 512px;
+  z-index: 0;
+}
+.explanation{
+  h3{
+    @include rotate(-6);
+    @include translate(20px, 80px);
+    top: -100px;
+  }
+  p{
+    margin-left: 300px;
+    margin-right: 40px;
+  }
+}
+
+.explanation:before{
+  @include rotate(24);
+  margin-right: 0px;
+  margin-top: 80px;
+}
+
+.participation{
+  h3{
+    @include rotate(-17);
+    left: 40px;
+    top: -80px;
+  }
+  p{
+    margin-left: 240px;
+    margin-right: 100px;
+  }
+}
+.participation:before{
+  @include rotate(320);
+  margin-right: 0px;
+  margin-top: 120px;
+}
+
+.benefits{
+  h3{
+    @include rotate(-22);
+    left: 120px;
+    top: -100px;
+  }
+  p{
+    margin-left: 280px;
+    margin-right: 60px;
+  }
+}
+.benefits:before{
+  @include rotate(10);
+  margin-right: 0px;
+}
+
+.requirements{
+  h3{
+    @include rotate(-18);
+    left: 30px;
+    top: -80px;
+  }
+  p{
+    margin-left: 200px;
+    margin-right: 140px;
+  }
+}
+.requirements:before{
+  @include rotate(72);
+  margin-right: 40px;
+  margin-top: 240px;
+}
+footer{
+  background: $color2;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 1.5em 5em;
+  right: 0;
+  text-align: center;
+  
+  a:link, a:visited{
+    color: white;
+    display: inline-block;
+    font-size: 1.25em;
+    font-family: $secondary-font;
+    font-weight: 700;
+    margin: .5em;
+    padding: .1em;
+    position: relative;
+  }
+}
+.zen-validate-html, .zen-validate-css, .zen-license, .zen-accessibility, .zen-github{
+  margin: .5em;
+}
+.zen-validate-html:before, .zen-validate-css:before, 
+.zen-license:before, .zen-accessibility:before, .zen-github:before{
+  @include font-smoothing;
+  color: white;
+  font-family: $icon-font-name;
+  font-weight: 400;
+  margin-right: 5px;
+}
+.zen-validate-html:before{
+  content: "\f13b";
+}
+.zen-validate-css:before{
+  content: "\f13c";
+}
+.zen-license:before{
+  content: "\f20a";
+}
+.zen-accessibility:before{
+  content: "\f29a";
+}
+.zen-github:before{
+  content: "\f09b";
+}
+
+.sidebar{
+  @include transition(right 350ms ease-in-out);
+  background-color: transparent;
+  bottom: 0;
+  box-sizing: border-box;
+  height: 100%;
+  padding-left: 40px;
+  position: fixed;
+  right: -280px;
+  top: 0;
+  width: 320px;
+  z-index: 3;
+ 
+  ul{
+    list-style-position: outside;
+  }
+  li{
+    box-sizing: border-box;
+    color: $color4;
+    font-size: .75em;
+    padding: .25em;
+  }
+  li a:link{
+    color: $color4;
+  }
+  li:before {
+    content:"\f04e";
+    font-family: $icon-font-name;
+    color: $color4;
+    font-size: .7em;
+    padding-right: 4px;
+  } 
+  li:hover:before, li:hover a, li a:visited{
+    color: $color1;
+  }
+
+  h3{
+    color: $color4;
+    font-size: 1.5em;
+    font-weight: 700;
+    padding: .45em;
+    text-align: left;
+  }
+}
+.sidebar:hover{
+  right:0;
+}
+.sidebar:after{
+  @include font-smoothing;
+  @include transition(transform 500ms ease-out);
+  color: white;
+  content:"\f053";
+  font-family: $icon-font-name;
+  font-size: 20px;
+  font-weight: 400;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+}
+.sidebar:hover:after{
+  @include rotate(180);
+}
+.sidebar:before{
+  @include box-shadow;
+}
+.sidebar .wrapper {
+  @include box-shadow;
+  background: white;
+  box-sizing: border-box;
+  height: 100%;
+  padding: .8em;
+  text-align: left;
+  width: 280px; 
+}
+
+
+@media screen and (min-width: 960px){
+  .explanation h3, .participation h3{
+    top: -120px;
+  }
+  .benefits h3{
+    top: -180px;
+  }
+  .requirements h3{
+    top: -140px;
+  }
+}
+
+@media screen and (max-width: 680px){
+  header {
+    h1{
+    font-size: 3em;
+    }
+    h2{
+    font-size: 2em;
+    }
+  }
+
+  header:before{
+    top: 20px;
+  }
+
+  .main h3{
+    font-size: 2em;
+  }
+  
+  .explanation, .participation, .benefits, .requirements {
+    p{
+      margin-left: 60px;
+    }
+    h3{
+      font-size: 2em;
+      left: 0;
+    }
+  }
+}
+
+@media screen and (max-width: 460px){
+  .main p{
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  .main h3{
+    margin-left: 0;
+
+  }
+}
+
+
+
+
+

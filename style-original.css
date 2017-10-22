@@ -1,0 +1,580 @@
+/* css Zen Garden default style v1.02 */
+/* css released under Creative Commons License - http://creativecommons.org/licenses/by-nc-sa/1.0/  */
+
+/* This file based on 'Tranquille' by Dave Shea */
+/* You may use this file as a foundation for any new work, but you may find it easier to start from scratch. */
+/* Not all elements are defined in this file, so you'll most likely want to refer to the xhtml as well. */
+
+/* Your images should be linked as if the CSS file sits in the same folder as the images. ie. no paths. */
+
+/*RESET*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  border: 0;
+  font: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;  
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+body {
+  line-height: 1;
+}
+ol, ul {
+  list-style: none;
+}
+blockquote, q {
+  quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: '';
+  content: none;
+}
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+/*FONTS*/
+@font-face {
+  font-family: 'FontAwesome';
+  src: url('fontawesome-webfont.eot');
+  src: local('☺︎'),
+        url('fontawesome-webfont.eot?iefix') format('eot'),
+        url('fontawesome-webfont.woff') format('woff'),
+        url('fontawesome-webfont.otf') format('opentype'),
+        url('fontawesome-webfont.ttf') format('truetype'),
+        url('fontawesome-webfont.svg#fontawesome') format('svg');
+}
+
+/* basic elements */
+html {
+  background: #FF9B22;
+  color: #FFFFFF;
+}
+body {
+  margin: 0 auto;
+  min-width: 480px;
+  max-width: 1280px;
+  text-align: justify;
+}
+header{
+  bottom: 0;
+  height: 400px;
+  left: -50px;
+  overflow: hidden;
+  position: absolute;
+  right: 2000px;  
+  text-align: center;
+  top: 112px;
+  -webkit-transform: rotate(18deg);
+  -moz-transform: rotate(18deg);
+  -ms-transform: rotate(18deg);
+  -o-transform: rotate(18deg);
+  transform: rotate(18deg);
+  transform-origin: 50% 50%;
+  width: 100%;
+}
+header:before{
+  background: url('triangle.svg') no-repeat;
+  background-size: contain;
+  background-position: center;
+  bottom: 0;
+  content: "";
+  height: 256px;
+  left: 80px;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  top: 80px;
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+  transform-origin: 50% 50%;
+  z-index: -1;
+}
+header h1 {
+  color: #F24408;
+  font-size: 4.5em;
+  font-style: italic;
+  font-weight: 700;
+  width: 100%;
+  white-space: nowrap;
+}
+header h2 {
+  font-size:3em;
+  font-style: italic;
+  position: absolute;
+  left: 0;
+  width: 100%;
+  white-space: nowrap;
+}
+@media screen and (max-width: 600px){
+  header h1{
+    font-size: 3em;
+  }
+  header h2{
+    font-size: 2em;
+  }
+  .main h3{
+    font-size: 2em;
+  }
+  header:before{
+    top: 20px;
+  }
+}
+p, li {
+  font-family: "eskorte-latin",sans-serif;
+  font-weight: 400;
+  padding: .5em;
+}
+h1,h2,h3,h4,h5,h6{
+  font-family: "skolar-sans-latin",sans-serif;
+  font-weight: 400;
+  padding: .1em;
+}
+h3 {
+  font-size: 2em;
+  text-align: left;
+}
+a:active, a:focus, a:hover, a:link, a:visited {
+  color: #FFC715;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+/* specific divs */
+.page-wrapper{
+  overflow: hidden;
+}
+.intro {
+}
+.summary {
+  margin-top: 400px;
+  margin-left: 20px;
+  margin-right: 40%;
+  position: relative;
+  -webkit-transform: rotate(6deg) translate(20px, 0px);
+  -moz-transform: rotate(6deg) translate(20px, 0px);
+  -ms-transform: rotate(6deg) translate(20px, 0px);
+  -o-transform: rotate(6deg) translate(20px, 0px);
+  transform: rotate(6deg) translate(20px, 0px);
+  transform-origin: 50% 50%;
+}
+.summary p {
+  font-style: italic;
+}
+.preamble{
+  margin: 4em 4em;
+  padding: 2em;
+  position: relative;
+  left:0;
+  -webkit-transform: rotate(-8deg);
+  -moz-transform: rotate(-8deg);
+  -ms-transform: rotate(-8deg);
+  -o-transform: rotate(-8deg);
+  transform: rotate(-8deg);
+}
+.explanation:before, .participation:before, .benefits:before, .requirements:before{
+  background: url('triangle2.svg') no-repeat;
+  background-size: contain;
+  background-position: center;
+  content: "";
+  height: 256px;
+  left: 0;
+  margin: 0 auto;
+  position: absolute;
+  right: 0;
+  width: 512px;
+  z-index: 0;
+}
+.preamble:before{
+  background: url('triangle.svg') no-repeat;
+  -webkit-transform: rotate(172deg);
+  -moz-transform: rotate(172deg);
+  -ms-transform: rotate(172deg);
+  -o-transform: rotate(172deg);
+  transform: rotate(172deg);
+  background-size: contain;
+  background-position: center;
+  content: "";
+  height: 256px;
+  padding: 20px;
+  position: absolute;
+  width: 512px;
+  z-index: -1;
+}
+.preamble h3{
+  font-size: 2.5em;
+  font-weight: 700;
+}
+.preamble p{
+}
+.main {
+  background: #F24408;
+  background: -webkit-linear-gradient(#FF9B22, #F24408 12%, #FF9B22), -webkit-linear-gradient(left, #FF9B22, #F24408, #FF9B22); 
+  background: -o-linear-gradient(#FF9B22, #F24408 12%, #FF9B22), -o-linear-gradient(left, #FF9B22, #F24408, #FF9B22); 
+  background: -moz-linear-gradient(#FF9B22, #F24408 12%, #FF9B22), -moz-linear-gradient(left, #FF9B22, #F24408, #FF9B22);
+  background: linear-gradient(#FF9B22, #F24408 12%, #FF9B22), linear-gradient(left, #FF9B22, #F24408, #FF9B22);
+  margin-top: 10em;
+  position: relative;
+}
+.main p{
+}
+.main h3{
+  color: #FFC715;
+  font-size: 4em;
+  font-weight: 700;
+  text-align: left;
+  white-space: nowrap;
+  width: 100%;
+  transform-origin: 0% 100%;
+}
+
+@media screen and (max-width: 768px){
+  .explanation p, .participation p, .benefits p, .requirements p{
+    margin-left: 100px;
+    margin-right: 0px;
+  }
+  .explanation h3, .participation h3, .benefits h3, .requirements h3{
+    font-size: 2em;
+  }
+}
+
+@media screen and (max-width: 460px){
+  .main p{
+    margin-left: 0;
+  }
+  .main h3{
+    margin-left: 0;
+
+  }
+}
+.explanation, .participation, .benefits, .requirements{
+  margin-bottom: 8em;
+}
+.explanation p, .participation p, .benefits p, .requirements p{
+  line-height: 1.5em;
+  position: relative;
+  z-index: 1;
+}
+.explanation h3, .participation h3, .benefits h3, .requirements h3{
+  position: relative;
+  z-index: 1;
+}
+/*.explanation:before, .participation:before, .benefits:before, .requirements:before{
+  position: relative;
+}*/
+
+.explanation:before{
+  margin-right: 0;
+  margin-top: 80px;
+  -webkit-transform: rotate(24deg);
+  -moz-transform: rotate(24deg);
+  -o-transform: rotate(24deg);
+  transform: rotate(24deg);
+  transform-origin: 50% 50%;
+}
+.explanation h3{
+  top: -100px;
+  -webkit-transform: rotate(-6deg) translate(20px, 80px);
+  -moz-transform: rotate(-6deg) translate(20px, 80px);
+  -ms-transform: rotate(-6deg) translate(20px, 80px);
+  -o-transform: rotate(-6deg) translate(20px, 80px);
+  transform: rotate(-6deg) translate(20px, 80px);
+  transform-origin: 50% 50%;
+
+}
+.explanation p{
+  margin-left: 300px;
+  margin-right: 40px;
+}
+.participation:before{
+  margin-right: 0;
+  margin-top: 120px;
+  -webkit-transform: rotate(320deg);
+  -moz-transform: rotate(320deg);
+  -ms-transform: rotate(320deg);
+  -o-transform: rotate(320deg);
+  transform: rotate(320deg);
+}
+.participation p{
+  margin-left: 240px;
+  margin-right: 100px;
+}
+.participation h3{
+  left: 40px;
+  top: -80px;
+  -webkit-transform: rotate(-17deg);
+  -moz-transform: rotate(-17deg);
+  -ms-transform: rotate(-17deg);
+  -o-transform: rotate(-17deg);
+  transform: rotate(-17deg);
+  transform-origin: 50% 50%;
+}
+
+.benefits:before{
+  margin-right: 0;
+  -webkit-transform: rotate(10deg);
+  -moz-transform: rotate(10deg);
+  -ms-transform: rotate(10deg);
+  -o-transform: rotate(10deg);
+  transform: rotate(10deg);
+  transform-origin: 50% 50%;
+}
+.benefits h3{
+  left: 120px;
+  top: -100px;
+  -webkit-transform: rotate(-22deg);
+  -moz-transform: rotate(-22deg);
+  -ms-transform: rotate(-22deg);
+  -o-transform: rotate(-22deg);
+  transform: rotate(-22deg);
+  transform-origin: 50% 50%;
+}
+.benefits p{
+  margin-left: 280px;
+  margin-right: 60px;
+}
+.requirements:before{
+  margin-top:240px;
+  margin-right: 40px;
+  -webkit-transform: rotate(72deg);
+  -moz-transform: rotate(72deg);
+  -ms-transform: rotate(72deg);
+  -o-transform: rotate(72deg);
+  transform: rotate(72deg);
+}
+.requirements h3{
+  left:30px;
+  top: -80px;
+  -webkit-transform: rotate(-18deg);
+  -moz-transform: rotate(-18deg);
+  -ms-transform: rotate(-18deg);
+  -o-transform: rotate(-18deg);
+  transform: rotate(-18deg);
+  transform-origin: 50% 50%;
+}
+.requirements p{
+  margin-left: 200px;
+  margin-right: 140px;
+}
+
+footer { 
+  background-color: #F24408;
+  bottom: 0;
+  margin: 0 auto;
+  padding: 1.5em 5em;
+  right: 0;
+  text-align: center;
+}
+footer a:link, footer a:visited {
+  color: #FFFFFF;
+  display: inline-block; 
+  font-size: 1.25em;
+  font-family: "skolar-sans-latin",sans-serif;
+  font-weight: 700;
+  margin: .5em;
+  padding: .1em;
+  position: relative;
+}
+.zen-validate-html, .zen-validate-css, .zen-license, .zen-accessibility, .zen-github{
+  margin: .5em;
+}
+.zen-validate-html:before, .zen-validate-css:before, 
+.zen-license:before, .zen-accessibility:before, .zen-github:before{
+  color: white;
+  font-family: FontAwesome;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  margin-right: 5px;
+}
+.zen-validate-html:before{
+  content: "\f13b";
+}
+.zen-validate-css:before{
+  content: "\f13c";
+}
+.zen-license:before{
+  content: "\f20a";
+}
+.zen-accessibility:before{
+  content: "\f29a";
+}
+.zen-github:before{
+  content: "\f09b";
+}
+.sidebar {
+  background-color: transparent;
+  bottom: 0;
+  box-sizing: border-box;
+  height: 100%;
+  padding-left: 40px;
+  position: fixed;
+  right: -260px;
+  top: 0;
+  -webkit-transition: right 350ms ease-in-out; /* Safari */
+  transition: right 350ms ease-in-out;
+  width: 300px;
+  z-index: 3;
+}
+
+.sidebar:after{
+  -webkit-transition: transform 500ms ease-out; /* Safari */
+  transition: transform 500ms ease-out;
+  content:"\f053";
+  font-family: FontAwesome;
+  color: white;
+  font-size: 20px;
+  font-smooth: always;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+  left: 10px;
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+}
+.sidebar:hover:after{
+  -webkit-transform: rotate(180deg);
+  -mox-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+.sidebar:before{
+  content: "";
+  cursor: pointer;
+  background: #F90422;
+  border-radius: 3px 0 0 3px;
+  -webkit-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  moz-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  height: 40px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 40px;
+  z-index: 1;
+}
+.sidebar:hover{
+  right:0;
+}
+.sidebar .wrapper {
+  background: #FFFFFF;
+  box-sizing: border-box;
+  -webkit-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  moz-box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  box-shadow: -4px 4px 19px -4px rgba(0,0,0,0.43);
+  height: 100%;
+  padding: .8em;
+  text-align: left;
+  width: 260px;
+  
+}
+.sidebar .design-archives,
+.sidebar .zen-resources,
+.sidebar .design-selection{
+}
+.sidebar ul li:before {
+  content:"\f04e";
+  font-family: FontAwesome;
+  color: #F90422;
+  font-size: 16px;
+    padding-right: 4px;
+
+
+}
+.sidebar ul li:hover:before, .sidebar ul li:hover a, .sidebar li a:visited{
+  color: #FF9B22;
+}
+
+.sidebar h3{
+  color: #F90422;
+  font-size: 1.5em;
+  font-weight: 700;
+  padding: .45em;
+  text-align: left;
+}
+
+.sidebar ul {
+  list-style-position: outside;
+}
+.sidebar li {
+  box-sizing: border-box;
+  color: #FFFFFF;
+  font-size: .9em;
+  padding: .6em;
+}
+.sidebar li a:link {
+  color: #F90422;
+}
+
+.sidebar li a:link:nth-child(2), a:visited:nth-child(2){
+  display: none;
+}
+.extra1 {
+}
+
+@media screen and (max-width: 768px){
+  .explanation p, .participation p, .benefits p, .requirements p{
+    margin-right: 60px;
+  }
+  .explanation h3, .participation h3, .benefits h3, .requirements h3{
+    font-size: 2em;
+  }
+}
+@media screen and (max-width: 680px){
+  .explanation p, .participation p, .benefits p, .requirements p{
+    margin-left: 60px;
+  }
+  .explanation h3, .participation h3, .benefits h3, .requirements h3{
+    font-size: 2em;
+    left: 0;
+  }
+}
+
+@media screen and (max-width: 460px){
+  .main p{
+    margin-left: 1em;
+    margin-right: 1em;
+  }
+  .main h3{
+    margin-left: 0;
+
+  }
+}
+@media screen and (min-width: 960px){
+  .explanation h3, .participation h3{
+    top: -120px;
+  }
+  .benefits h3{
+    top: -180px;
+  }
+  .requirements h3{
+    top: -140px;
+  }
+}
+@media screen and (max-height: 678px){
+  .sidebar .design-selection ul li:nth-of-type(odd){
+    display: none;
+  }
+}
